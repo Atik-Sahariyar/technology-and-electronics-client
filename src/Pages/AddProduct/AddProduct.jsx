@@ -26,7 +26,7 @@ const AddProduct = () => {
         console.log(productInfo);
 
         // send data to server
-        fetch('http://localhost:5500/products', {
+        fetch('https://technology-and-electronics-server-26l1plkyb-atik-sahariyar.vercel.app/products', {
             method: "POST",
             headers: {
                 "content-type" : "application/json"
@@ -59,7 +59,7 @@ const AddProduct = () => {
                             <span className="label-text">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full" />
+                            <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full"  required/>
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -67,7 +67,7 @@ const AddProduct = () => {
                             <span className="label-text">Brand Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="brandName" placeholder="Brand Name" className="input input-bordered w-full" />
+                            <input type="text" name="brandName" placeholder="Brand Name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ const AddProduct = () => {
                             <span className="label-text">Cetegory</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="cetegory" placeholder="cetegory Name" className="input input-bordered w-full" />
+                            <input type="text" name="cetegory" placeholder="cetegory Name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -86,7 +86,7 @@ const AddProduct = () => {
                             <span className="label-text">Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="price" placeholder="price" className="input input-bordered w-full" />
+                            <input type="text" name="price" placeholder="price" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ const AddProduct = () => {
                             <span className="label-text">Short description</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="shortDescription" placeholder="Short description" className="input input-bordered w-full" />
+                            <input type="text" name="shortDescription" placeholder="Short description" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -105,7 +105,7 @@ const AddProduct = () => {
                             <span className="label-text">Rating</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="rating" placeholder="Rating" className="input input-bordered w-full" />
+                            <input type="text" name="rating" placeholder="Rating" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ const AddProduct = () => {
                             <span className="label-text">Photo URL</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" />
+                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>

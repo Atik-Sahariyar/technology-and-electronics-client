@@ -1,9 +1,12 @@
+import Slider from "../Home/Slider";
+import Brands from "./Brands";
 
 
 const Home = () => {
     return (
         <div>
-            <h3>This is home page</h3>
+            <Slider></Slider>
+            <Brands></Brands>
         </div>
     );
 };

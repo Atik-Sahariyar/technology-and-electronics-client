@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Register from "../Pages/Register/Register";
 import SignIn from "../Pages/SignIn/SignIn";
 import AddProduct from "../Pages/AddProduct/AddProduct";
+import PrivateRoute from "./PrivateRoutes";
+import BrandDetails from "../Pages/BrandDetails/BrandDetails";
 
 
 const Routes = createBrowserRouter([
@@ -24,9 +26,12 @@ const Routes = createBrowserRouter([
                 element: <SignIn></SignIn>
             },
             {
-                path: 'add-product',
-                element: <AddProduct></AddProduct>
-            }
+                path: '/add-product',
+                element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute> 
+            },
+            {
+                path: "/brand-details",
+                element: <PrivateRoute> <BrandDetails></BrandDetails> </PrivateRoute>,            }
         ]
     }
 ])

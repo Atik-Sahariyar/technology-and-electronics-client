@@ -25,14 +25,8 @@ const Navbar = () => {
     const links = <>
         <li> <NavLink to="/">Home</NavLink></li>
         <li> <NavLink to="/about-us">About Us</NavLink></li>
-        {
-            user ? <>
-                <li> <NavLink to="/add-product">Add Product</NavLink></li>
-                <li> <NavLink to="/my-cart">My Cart</NavLink></li>
-            </>
-            :
-            ''
-        }
+        <li> <NavLink to="/add-product">Add Product</NavLink></li>
+        <li> <NavLink to="/my-cart">My Cart</NavLink></li>
         <li> <NavLink to="/register">Registration</NavLink></li>
 
     </>
@@ -42,6 +36,8 @@ const Navbar = () => {
             .then()
             .catch()
     }
+
+
 
     return (
         <div className="navbar bg-base-100 ">
@@ -55,7 +51,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className=" flex flex-col md:flex-row lg:flex-row items-center">
-                    <a className="btn btn-ghost normal-case text-xl">Educational Events</a>
+                    <a className="btn btn-ghost normal-case text-xl">Technology and Electronics</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
