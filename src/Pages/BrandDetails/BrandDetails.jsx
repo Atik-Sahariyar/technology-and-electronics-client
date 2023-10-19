@@ -1,31 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-
+import BrandDetailsCard from "./BrandDetailsCard";
 
 const BrandDetails = () => {
+    const { filteredBrand } = useContext(AuthContext)
 
-    const { products,brandName } = useContext(AuthContext);
-     const [ filteredProducts, setFilteredProducts ] = useState([])
-    console.log(products);
-    console.log(brandName);
-
-   
-    useEffect(() => {
-        const filterProducts =  products.filter(product => {
-            console.log(product.brandName);
-            product.brandName === brandName})
-        setFilteredProducts(filterProducts)
-        console.log(filterProducts);
-    },[products, brandName])
-    console.log(filteredProducts);
-    
 
     return (
         <div>
-            <h2>Brand details</h2>
-            {
-               
-            }
+            <h2 className=" text-4xl font-bold text-center my-6">Brand details</h2>
+            <div className=" mx-auto grid gap-4">
+                {
+                    filteredBrand.map(product => <BrandDetailsCard key={product._id} product={product}></BrandDetailsCard>)
+                }
+            </div>
+          
         </div>
     );
 };
