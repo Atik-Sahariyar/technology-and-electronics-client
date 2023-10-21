@@ -7,7 +7,7 @@ const CustomerReviews = () => {
     // Fetch customer reviews and testimonials from your API
     const fetchReviews = async () => {
       try {
-        const response = await fetch('http://localhost:5700/customerReviews'); // Replace with your API endpoint for customer reviews
+        const response = await fetch('https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/customerReviews'); // Replace with your API endpoint for customer reviews
         const data = await response.json();
         setReviews(data);
       } catch (error) {

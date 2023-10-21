@@ -9,7 +9,7 @@ const FeaturedProducts = () => {
       
       const fetchFeaturedProducts = async () => {
         try {
-          const response = await fetch('http://localhost:5700/products'); 
+          const response = await fetch('https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/products'); 
           const data = await response.json();
           setFeaturedProducts(data);
         } catch (error) {

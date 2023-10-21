@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
        const fetchData = async () => {
 
         try{
-            const response = await fetch('https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products');
+            const response = await fetch('https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/products');
             if (response.ok) {
                 const data = await response.json();
                 setProducts(data);

@@ -8,7 +8,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchCartProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5700/cartProducts");
+        const response = await fetch("https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/cartProducts");
         const data = await response.json();
         setCartProducts(data);
       } catch (error) {
@@ -47,7 +47,7 @@ const ProductDetails = () => {
                   })
                   return;
             }
-            await fetch(`http://localhost:5700/cartProducts`, {
+            await fetch(`https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/cartProducts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json",

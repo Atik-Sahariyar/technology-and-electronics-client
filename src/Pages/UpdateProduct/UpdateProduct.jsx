@@ -31,7 +31,7 @@ const UpdateProduct = () => {
         console.log(updateProductInfo);
 
         // send data to server
-        fetch(`https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products/${_id}`, {
+        fetch(`https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/products/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type" : "application/json"

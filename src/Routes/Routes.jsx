@@ -44,7 +44,7 @@ const Routes = createBrowserRouter([
               path: '/update-product/:id',
               element: <PrivateRoute> <UpdateProduct></UpdateProduct> </PrivateRoute>,
               errorElement: <ErrorPage></ErrorPage>,
-              loader: ({params}) => fetch(`https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products/${params.id}`)
+              loader: ({params}) => fetch(`https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/products/${params.id}`)
             },
             {
                 path: "/brand-details",
@@ -55,13 +55,13 @@ const Routes = createBrowserRouter([
                 path: '/product-details/:id',
                 element: <ProductDetails></ProductDetails>,
                 errorElement: <ErrorPage></ErrorPage>,
-                loader: ({params}) => fetch(`https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products/${params.id}`)     
+                loader: ({params}) => fetch(`https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/products/${params.id}`)     
             },
             {
                 path: '/my-cart',
                 element: <PrivateRoute> <MyCart></MyCart> </PrivateRoute>,
                 errorElement: <ErrorPage></ErrorPage>,
-                loader: () => fetch('http://localhost:5700/cartProducts')
+                loader: () => fetch('https://technology-and-electronics-server-fhomi637j-atik-sahariyar.vercel.app/cartProducts')
             }
         ]
     }
