@@ -11,12 +11,28 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState([]);
     const [filteredBrand, setfilteredBrand] = useState([])
-
+   
     useEffect(() => {
+       const fetchData = async () => {
 
-        fetch('https://technology-and-electronics-server-26l1plkyb-atik-sahariyar.vercel.app/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
+        try{
+            const response = await fetch('https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products');
+            if (response.ok) {
+                const data = await response.json();
+                setProducts(data);
+            } else {
+                console.error('Error fetching data:', response.statusText);
+            }
+
+        }
+        catch (error){
+            console.error('Error fetching data:', error);
+        }
+        finally{
+            setLoading(false);
+        }
+       };
+       fetchData();
     }, [])
 
     //  our brands
@@ -30,11 +46,13 @@ const AuthProvider = ({ children }) => {
     ];
 
     // handle brand name wise data filter
-    const handleBrand = brandName => {
-        const filteredProducts = products.filter(product => product.brandName === brandName);
-        setfilteredBrand(filteredProducts);
-        console.log(filteredProducts);
-    }
+
+        const handleBrand = async(brandName) => {
+            const filteredProducts = await products?.filter(product => product.brandName === brandName);
+            setfilteredBrand(filteredProducts);
+            console.log(filteredProducts);
+        }
+   
 
     // create user with email and password
     const createUser = (email, password) => {

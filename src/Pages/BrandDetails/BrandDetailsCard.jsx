@@ -26,7 +26,9 @@ const BrandDetailsCard = ({ product }) => {
                     <NavLink to={`/product-details/${_id}`}>
                         <button className=' p-2 bg-blue-500 text-white rounded-lg px-3 hover:bg-blue-800'>Details</button>
                     </NavLink>
-                    <button className=' p-2 bg-blue-500 text-white rounded-lg px-3 hover:bg-blue-800'>Update</button>
+                     <NavLink to={`/update-product/${_id}`}>
+                     <button className=' p-2 bg-blue-500 text-white rounded-lg px-3 hover:bg-blue-800'>Update</button>
+                     </NavLink>
                 </div>
             </div>
         </div>

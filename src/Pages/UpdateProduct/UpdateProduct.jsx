@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddProduct = () => {
-    const [ products, setProducts ] = useState([])
-  
-    useEffect(() => {
-      const fetchCartProducts = async () => {
-        try {
-          const response = await fetch("http://localhost:5700/products");
-          const data = await response.json();
-          setProducts(data);
-        } catch (error) {
-          console.error("Error fetching cart products:", error);
-        }
-      };
-  
-      fetchCartProducts();
-    }, []);
+const UpdateProduct = () => {
+    
 
-    const handleAddProduct = e => {
+     const product = useLoaderData();
+     const {_id, name, brandName, cetegory,shortDescription, photo, price, rating } = product;
+     console.log(product);
+    const handleUpdateProduct = e => {
         e.preventDefault();
 
         const form = e.target;
@@ -30,7 +19,7 @@ const AddProduct = () => {
         const rating = form.rating.value;
         const photo = form.photo.value;
 
-        const productInfo = {
+        const updateProductInfo = {
             name,
             brandName,
             cetegory,
@@ -39,32 +28,23 @@ const AddProduct = () => {
             rating,
             photo,
         }
-        console.log(productInfo);
-        const isProductInDb = products.some((item) => item.name === productInfo.name);
-        if(isProductInDb){
-            Swal.fire({
-                title: 'Alert',
-                text: 'Product is already in the database',
-                icon: 'X',
-                confirmButtonText: 'Ok'
-              })
-              return;
-        }
+        console.log(updateProductInfo);
+
         // send data to server
-        fetch('https://technology-and-electronics-server-26l1plkyb-atik-sahariyar.vercel.app/products', {
-            method: "POST",
+        fetch(`https://technology-and-electronics-server-7unbpf20r-atik-sahariyar.vercel.app/products/${_id}`, {
+            method: "PUT",
             headers: {
                 "content-type" : "application/json"
             },
-            body: JSON.stringify(productInfo)
+            body: JSON.stringify(updateProductInfo)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if(data.insertedId){
+            if(data.modifiedCount){
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Product Added Successfully',
+                    text: 'Product Updated Successfully',
                     icon: 'success',
                     confirmButtonText: 'Ok'
                   })
@@ -75,8 +55,8 @@ const AddProduct = () => {
     }
     return (
         <div className="bg-[#F4F3F0] p-24">
-            <h2 className="text-3xl font-extrabold">Add a Product</h2>
-            <form onSubmit={handleAddProduct}>
+            <h2 className="text-3xl font-extrabold">Update a Product</h2>
+            <form onSubmit={handleUpdateProduct}>
                 {/* form name and quantity row */}
                 <div className="md:flex mb-8">
                     <div className="form-control md:w-1/2">
@@ -84,7 +64,7 @@ const AddProduct = () => {
                             <span className="label-text">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Product Name" className="input input-bordered w-full"  required/>
+                            <input type="text" name="name" defaultValue={name} placeholder="Product Name" className="input input-bordered w-full"  required/>
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -92,7 +72,7 @@ const AddProduct = () => {
                             <span className="label-text">Brand Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="brandName" placeholder="Brand Name" className="input input-bordered w-full" required />
+                            <input type="text" name="brandName" defaultValue={brandName} placeholder="Brand Name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -103,7 +83,7 @@ const AddProduct = () => {
                             <span className="label-text">Cetegory</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="cetegory" placeholder="cetegory Name" className="input input-bordered w-full" required />
+                            <input type="text" name="cetegory" defaultValue={cetegory} placeholder="cetegory Name" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -111,7 +91,7 @@ const AddProduct = () => {
                             <span className="label-text">Price</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="price" placeholder="price" className="input input-bordered w-full" required />
+                            <input type="text" name="price" placeholder="price" defaultValue={price} className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -122,7 +102,7 @@ const AddProduct = () => {
                             <span className="label-text">Short description</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="shortDescription" placeholder="Short description" className="input input-bordered w-full" required />
+                            <input type="text" name="shortDescription" defaultValue={shortDescription} placeholder="Short description" className="input input-bordered w-full" required />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 ml-4">
@@ -130,7 +110,7 @@ const AddProduct = () => {
                             <span className="label-text">Rating</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="rating" placeholder="Rating" className="input input-bordered w-full" required />
+                            <input type="text" name="rating" defaultValue={rating} placeholder="Rating" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
@@ -141,15 +121,15 @@ const AddProduct = () => {
                             <span className="label-text">Photo URL</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered w-full" required />
+                            <input type="text" name="photo" defaultValue={photo} placeholder="Photo URL" className="input input-bordered w-full" required />
                         </label>
                     </div>
                 </div>
-                <input type="submit" value="Add Product" className="btn btn-block" />
+                <input type="submit" value="Update Product" className="btn btn-block" />
 
             </form>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

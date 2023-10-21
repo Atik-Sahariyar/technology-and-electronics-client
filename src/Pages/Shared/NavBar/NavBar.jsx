@@ -24,7 +24,6 @@ const Navbar = () => {
 
     const links = <>
         <li> <NavLink to="/">Home</NavLink></li>
-        <li> <NavLink to="/about-us">About Us</NavLink></li>
         <li> <NavLink to="/add-product">Add Product</NavLink></li>
         <li> <NavLink to="/my-cart">My Cart</NavLink></li>
         <li> <NavLink to="/register">Registration</NavLink></li>
@@ -51,6 +50,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className=" flex flex-col md:flex-row lg:flex-row items-center">
+                    <img className=" w-16 h-16 rounded-full" src="https://i.ibb.co/xCQ3Zfd/logo.jpg" alt="" />
                     <a className="btn btn-ghost normal-case text-xl">Technology and Electronics</a>
                 </div>
             </div>
